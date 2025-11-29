@@ -15,9 +15,7 @@ select = [
     "N",   # pep8-naming
     "PL",  # pylint rules
 ]
-ignore = [
-    "D100", # Missing docstring in public module (optional, remove to enforce)
-]
+ignore = []
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
