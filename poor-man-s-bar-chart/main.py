@@ -4,7 +4,7 @@ import sys
 from collections import Counter
 
 # Note: text should be a short phrase for bars to fit in IDLE window
-default_text = "Like the castle in its corner in a medieval game, I foresee terrible \
+DEFAULT_TEXT = "Like the castle in its corner in a medieval game, I foresee terrible \
 trouble and I stay here just the same."
 
 
@@ -13,7 +13,7 @@ def main():
     text = input("Enter a string: ")
     if len(text) == 0:
         print("Using default text.")
-        text = default_text
+        text = DEFAULT_TEXT
 
     print("\nYou may need to stretch console window if text wrapping occurs.\n")
     print("text =", text, file=sys.stderr)
@@ -31,8 +31,8 @@ def convert_text(text: str) -> None:
 
     # Alphabetical, consistent order
     for letter in sorted(freq):
-        bar = "#" * freq[letter]
-        print(f"{letter}: {bar} ({freq[letter]})")
+        chart_bar = "#" * freq[letter]
+        print(f"{letter}: {chart_bar} ({freq[letter]})")
 
 
 if __name__ == "__main__":
