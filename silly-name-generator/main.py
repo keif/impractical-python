@@ -148,15 +148,15 @@ last = (
 while True:
     # Choose a first name at random
     # Assign the first name to a variable
-    firstName = random.choice(first)
+    first_name = random.choice(first)
 
     # Choose a surname at random
     # Assign the surname to a variable
-    lastName = random.choice(last)
+    last_name = random.choice(last)
 
     # Print the names to the screen in order and in red font
     print("\n\n")
-    print(f"\n{firstName} {lastName}\n")
+    print(f"\n{first_name} {last_name}\n")
 
     # Ask the user to quit or play again
     try_again = input("\n\nTry again? (Press Enter else n to quit)\n ")

@@ -10,8 +10,17 @@ select = [
     "I",   # isort
     "B",   # flake8-bugbear
     "UP",  # pyupgrade
+    "D",   # pydocstyle (docstring checks)
+    "C90", # mccabe complexity
+    "N",   # pep8-naming
+    "PL",  # pylint rules
 ]
-ignore = []
+ignore = [
+    "D100", # Missing docstring in public module (optional, remove to enforce)
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.ruff.format]
 quote-style = "double"
