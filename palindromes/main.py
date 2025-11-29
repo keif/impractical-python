@@ -1,30 +1,30 @@
 """Finding Palindromes."""
 
+from pathlib import Path
+
+from load_dictionary import load
+
+SCRIPT_DIR = Path(__file__).parent
+
 
 def main():
-    """Finding Palindromes."""
-    # pseudocode
-    # How do we find palindromes?
-    # Compare a word to itself sliced backward
-    # i.e. word = nurses
-    # word[:] // nurses
-    # word[::-1] // sesrun
+    """Finding Palindromes.
 
-    # load our dictionary word list
-    # create an empty list to hold palindromes
-    # loop through each word in the word list:
-    #   If the word sliced forward is the same backward:
-    #       Append word to palindrome list
-    #
+    How do we find palindromes?
+    Compare a word to itself sliced backward.
+    word = nurses
+    word[:] // nurses
+    word[::-1] // sesrun
+    word != word[::-1] // not a palindrome
+    """
+    word_list = load(SCRIPT_DIR / "words.txt")
+    palindrome_list = []
+    for word in word_list:
+        if len(word) > 1 and word == word[::-1]:
+            palindrome_list.append(word)
 
-    # code stub
-    # try:
-    #     with open("words.txt") as in_file:
-    # do something
-    # pass
-    # except OSError as e:
-    #     print(f"{e}\nError opening {file}. Terminating program.", file=sys.stderr)
-    #     sys.exit(1)
+    print(f"\nNumber of palindromes found = {len(palindrome_list)}\n")
+    print(*palindrome_list, sep="\n")
 
 
 if __name__ == "__main__":
