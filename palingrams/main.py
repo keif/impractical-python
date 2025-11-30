@@ -3,9 +3,9 @@
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
 from utility.load_dictionary import load
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 SCRIPT_DIR = Path(__file__).parent
 

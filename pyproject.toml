@@ -23,3 +23,6 @@ convention = "google"
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+
+[tool.pylint.main]
+init-hook = "import sys; sys.path.insert(0, '.')"
