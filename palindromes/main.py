@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from load_dictionary import load
+from utility.load_dictionary import load
 
 SCRIPT_DIR = Path(__file__).parent
 

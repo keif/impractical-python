@@ -1,30 +1,63 @@
-"""Palingrams.
+"""Find all word-pair palingrams in a dictionary file."""
 
-Find two-word palingrams.
-"""
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from utility.load_dictionary import load
+
+SCRIPT_DIR = Path(__file__).parent
+
+# Load dictionary of words
+WORD_LIST = load(SCRIPT_DIR / "2of4brif.txt")
+
+CHAR_MIN = 2
 
 
 def main():
     """Palingrams main function."""
-    # pseudocode
-    # EX. NURSES RUN
-    # EX. STIR GRITS
-    # Load dictionary of words
-    # Empty list to hold palingrams
-    # For word in word list:
-    #   Get length of word
-    #   if length > 2:
-    #       loop through letters in the word:
-    #           if reversed word fragment at the front of word is in
-    #               word list and letters after form a palindomic sequence:
-    #               append word and reversed word to palingram list
-    #           if reversed word fragment at end of word is in word
-    #           list and letter before form a palindromic sequence:
-    #               Append reversed word and word to palingram list
-    # Sort palingram list alphabetically
-    # Print word-pair palingrams from palingram list
+    palingrams = find_palingrams(WORD_LIST)
+    # sort palingrams on first word
+    palingrams_sorted = sorted(palingrams)
 
-    pass
+    # display list of palingrams
+    print(f"\nNumber of palingrams = {len(palingrams_sorted)}\n")
+    # Print word-pair palingrams from palingram list
+    for first, second in palingrams_sorted:
+        print(f"{first} {second}")
+
+
+def find_palingrams(word_list):
+    """Find palingrams in passed in word list."""
+    word_set = set(word_list)  # speed up membership tests
+    # Empty list to hold palingrams
+    paligram_list = []
+
+    for word in word_set:
+        end = len(word)
+        reverse_word = word[::-1]
+
+        # skip single letters
+        if end < CHAR_MIN:
+            continue
+
+        for i in range(end):
+            # Case 1: word[i:] matches the front of reverse_word
+            if (
+                word[i:] == reverse_word[end - i :]
+                and reverse_word[end - i :] in word_set
+            ):
+                paligram_list.append((word, reverse_word[end - i :]))
+
+            # Case 2: word[:i] matches the back of reverse_word
+            if (
+                word[:i] == reverse_word[end - i :]
+                and reverse_word[: end - i] in word_set
+            ):
+                paligram_list.append((reverse_word[: end - i], word))
+
+    return paligram_list
 
 
 if __name__ == "__main__":
