@@ -11,9 +11,9 @@ from utility.load_dictionary import load
 SCRIPT_DIR = Path(__file__).parent
 
 # Load dictionary of words
-WORD_LIST = load(SCRIPT_DIR / "2of4brif.txt")
+WORD_LIST = load(SCRIPT_DIR.parent / "word-lists/2of4brif.txt")
 
-CHAR_MIN = 2
+CHAR_MIN = 1
 
 
 def main():

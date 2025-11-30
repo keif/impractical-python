@@ -2,7 +2,7 @@
 
 from utility.load_dictionary import load
 
-word_list = load("2of4brif.txt")
+word_list = load("../word-lists/2of4brif.txt")
 
 
 # find word-pair palingrams

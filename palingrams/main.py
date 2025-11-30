@@ -3,16 +3,16 @@
 import sys
 from pathlib import Path
 
-from utility.load_dictionary import load
-
 sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from utility.load_dictionary import load  # noqa: E402
 
 SCRIPT_DIR = Path(__file__).parent
 
 # Load dictionary of words
-WORD_LIST = load(SCRIPT_DIR / "2of4brif.txt")
+WORD_LIST = load(SCRIPT_DIR.parent / "word-lists/2of4brif.txt")
 
-CHAR_MIN = 2
+CHAR_MIN = 1
 
 
 def main():

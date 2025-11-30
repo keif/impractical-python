@@ -54,6 +54,16 @@ find_palingrams only: 0.194s total, 0.190s in function
 
 The ~0.008s difference between the function-only and full main() tests accounts for sorting and printing 1,028 results.
 
+## Recursive Approach
+
+`palingram_recursion.py` implements the algorithm using recursion instead of iteration. However, Python's default recursion limit (~1000) is quickly exceeded when processing a dictionary of ~60k words.
+
+```
+RecursionError: maximum recursion depth exceeded
+```
+
+While `sys.setrecursionlimit()` can increase this limit, the iterative approach is more practical for large datasets. The recursive version serves as an educational example of converting loops to recursion.
+
 ## Running the Profiler
 
 ```bash
