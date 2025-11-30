@@ -2,7 +2,10 @@
 
 ## Overview
 
-Comparison of `main.py` (original) vs `main_optimized.py` with profiling results.
+Comparison of our implementations against the original from [Impractical Python Projects](https://github.com/rlvaugh/Impractical_Python_Projects/tree/master/Chapter_2) by Lee Vaughan.
+
+- `main.py` - Our refactored version of the original
+- `main_optimized.py` - Our optimized implementation
 
 ## Optimizations Applied
 
@@ -35,9 +38,26 @@ The optimizations provide modest gains (~7% in the core function) because:
 
 The most significant outcome is **duplicate elimination** - the original produced 414 duplicate palingram pairs that the set-based approach removes.
 
+## Baseline Comparison
+
+`cprofile_test_orig.py` profiles just the `find_palingrams()` function in isolation (no sorting or printing) to compare against the original book's implementation:
+
+```
+find_palingrams only: 0.194s total, 0.190s in function
+```
+
+| Test | Scope | Total | `find_palingrams` |
+|------|-------|-------|-------------------|
+| `cprofile_test_orig.py` | Function only | 0.194s | 0.190s |
+| `cprofile_test.py` | Full main() | 0.206s | 0.198s |
+| `cprofile_optimized_test.py` | Full main() | 0.201s | 0.184s |
+
+The ~0.008s difference between the function-only and full main() tests accounts for sorting and printing 1,028 results.
+
 ## Running the Profiler
 
 ```bash
-python palingrams/cprofile_test.py           # original
+python palingrams/cprofile_test_orig.py      # function only (baseline)
+python palingrams/cprofile_test.py           # our refactored version
 python palingrams/cprofile_optimized_test.py # optimized
 ```
