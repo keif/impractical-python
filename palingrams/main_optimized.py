@@ -31,7 +31,7 @@ def main():
 def find_palingrams(word_list):
     """Find palingrams in passed in word list."""
     word_set = set(word_list)  # speed up membership tests
-    paligram_set = set()  # use set to avoid duplicates
+    palingram_set = set()  # use set to avoid duplicates
 
     # precompute reversed words
     reversed_words = {word: word[::-1] for word in word_set}
@@ -53,13 +53,13 @@ def find_palingrams(word_list):
 
             # Case 1: word[i:] matches the front of reverse_word
             if word[i:] == rev_suffix and rev_suffix in word_set:
-                paligram_set.add((word, rev_suffix))
+                palingram_set.add((word, rev_suffix))
 
             # Case 2: word[:i] matches the back of reverse_word
             if word[:i] == rev_suffix and rev_prefix in word_set:
-                paligram_set.add((rev_prefix, word))
+                palingram_set.add((rev_prefix, word))
 
-    return list(paligram_set)
+    return list(palingram_set)
 
 
 if __name__ == "__main__":
